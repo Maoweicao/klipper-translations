@@ -2,22 +2,42 @@
 
 Klipper版本发布。如何安装Klipper ，请查看[installation](Installation.md)。
 
+## Klipper 0.11.0
+
+发布于2022年11月28日。此版本更新内容:
+* Trinamic步进电机驱动器“双边步进”优化。
+* 支持Python3。Klipper主机代码现在可以在Python2和Python3中运行了。
+* 增强CAN BUS总线支持。现在支持如下微控制器的CAN BUS总线：rp2040, stm32g0,
+  stm32h7, atsame51, 和 atsame54 芯片.支持“USB to CAN bus bridge”（USB转CAN BUS桥）模式。
+* 支持CanBoot的bootloader.
+* 支持mpu9250和mpu6050加速传感器.
+* 提升了下列传感器的错误处理能力：max31856, max31855, max31865, and
+  max6675温度传感器.
+* 现在尽可能提供在处理长时间G-Code指令时更新LED灯状态的功能通过使用LED “template”支持。
+* 几个微控制器改进。现在支持stm32h743,
+  stm32h750, stm32l412, stm32g0b1, atsame70, atsame51, 和 atsame54 芯片。
+  支持I2C读取功能在atsamd和stm32f0上。硬件PWM功能在stm32上。基于 Linux mcu 信号的事件调度。新的rp2040支持选项加入
+  "make flash", i2c, 和rp2040-e5 USB勘误。
+* 新增下列模块选项: angle, dac084S085, exclude_object, led, mpu9250,
+  pca9632, smart_effector, z_thermal_adjust。 全新deltesian架构加入。全新dump_mcu工具加入。
+* 几个错误的修复和代码的清理。
+
 ## Klipper 0.10.0
 
-Available on 20210929. Major changes in this release:
+发布于2021年09月29日. 此版本更新内容:
 
-* Support for "Multi-MCU Homing". It is now possible for a stepper motor and its endstop to be wired to separate micro-controllers. This simplifies wiring of Z probes on "toolhead boards".
-* Klipper now has a [Community Discord Server](https://discord.klipper3d.org) and a [Community Discourse Server](https://community.klipper3d.org).
-* The [Klipper website](https://www.klipper3d.org) now uses the "mkdocs" infrastructure. There is also a [Klipper Translations](https://github.com/Klipper3d/klipper-translations) project.
-* Automated support for flashing firmware via sdcard on many boards.
-* New kinematic support for "Hybrid CoreXY" and "Hybrid CoreXZ" printers.
-* Klipper now uses `rotation_distance` to configure stepper motor travel distances.
-* The main Klipper host code can now directly communicate with micro-controllers using CAN bus.
-* New "motion analysis" system. Klipper's internal motion updates and sensor results can be tracked and logged for analysis.
-* Trinamic stepper motor drivers are now continuously monitored for error conditions.
-* Support for the rp2040 micro-controller (Raspberry Pi Pico boards).
-* The "make menuconfig" system now utilizes kconfiglib.
-* Many additional modules added: ds18b20, duplicate_pin_override, filament_motion_sensor, palette2, motion_report, pca9533, pulse_counter, save_variables, sdcard_loop, temperature_host, temperature_mcu
+* 支持"Multi-MCU Homing"（多MCU归位）。现在尽可能让一个轴电机和其限位连接到独立的相同控制器上。此具尽可能简化了使用“工具板”模式下的Z探针的布线。
+* Klipper现在有了一个[Discord社区服务器](https://discord.klipper3d.org)和一个[Discourse社区服务器](https://community.klipper3d.org)。
+* [Klipper网页](https://www.klipper3d.org) 现在使用"mkdocs"基础设施。同时也附带了一个[Klipper翻译](https://github.com/Klipper3d/klipper-translations)的项目.
+* 现在在多块MCU上支持通过SD卡自动刷写固件了。
+* 全新架构选项支持"Hybrid CoreXY"和"Hybrid CoreXZ"打印机。
+* Klipper现在可以使用`rotation_distance`来配置步进电机移动距离。
+* 现在主要Klipper主机代码可以直接通过MCU的CAN BUS总线进行沟通了。
+* 全新"运动分析"系统。Klipper现在可以实时跟踪和记录内部运动和传感器结果以供分析。
+* Trinamic步进电机驱动器现在会持续监控错误情况。
+* 支持rp2040 微控制器(Raspberry Pi Pico 开发板).
+* "make menuconfig"系统现在使用kconfiglib.
+* 新增许多模块支持: ds18b20, duplicate_pin_override, filament_motion_sensor, palette2, motion_report, pca9533, pulse_counter, save_variables, sdcard_loop, temperature_host, temperature_mcu
 * 几个错误的修复和代码的清理。
 
 ## Klipper 0.9.0
